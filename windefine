@@ -1,0 +1,36 @@
+def win(intable=[]):
+    w1=[1,1,1,1]
+    w2=[2,2,2,2]
+
+    #horizontal
+    for i in range(6):
+        for j in range(4):
+            if [intable[i][j],intable[i][j+1],intable[i][j+2],intable[i][j+3]]==w1:
+                return 1
+            if [intable[i][j],intable[i][j+1],intable[i][j+2],intable[i][j+3]]==w2:
+                return 2
+
+    #vertical
+    for i in range(7):
+        for j in range(3):
+            if [intable[j][i], intable[j+1][i], intable[j+2][i], intable[j+3][i]]==w1:
+                return 1
+            if [intable[j][i], intable[j+1][i], intable[j+2][i], intable[j+3][i]]==w2:
+                return 2
+
+    #left to right
+    for j in range(3):
+        for i in range(4):
+            if [intable[j][i], intable[j+1][i+1], intable[j+2][i+2], intable[j+3][i+3]]==w1:
+                return 1
+            if [intable[j][i], intable[j+1][i+1], intable[j+2][i+2], intable[j+3][i+3]]==w2:
+                return 2
+
+
+    #right to left
+    for j in range(3):
+        for i in range(6,2,-1):
+            if [intable[j][i], intable[j+1][i-1], intable[j+2][i-2], intable[j+3][i-3]]==w1:
+                return 1
+            if [intable[j][i], intable[j+1][i-1], intable[j+2][i-2], intable[j+3][i-3]]==w2:
+                return 2
