@@ -38,28 +38,7 @@ class graph:
         raise Exception("Failed to find best value")
 
     def construct_tree(self, b, ai, parentNode, myBoard, oppBoard, depth):
-        """
-        Likely the most complex function, this builds the tree of possibilities
-        by brute forcing through all possible configurations up to a given depth
-        (maxDepth). It works by getting the legal locations of where a place can
-        be placed, and setting those bits (equivalent to placing a token). Once
-        the board is either won or the max depth is reached, we evaluate the
-        board. When the function pops out, it creates the value of the parent
-        node based on its children values (maxmizing the values if we are
-        playing or minimizing if the opponent is playing). On a high level, we
-        are presuming both players will play the optimal moves and we want to
-        maxmize our reward and minimize the opponent's rewards. We alternate
-        back and forth from maximizing and minizming the reward after the
-        lowest tree values have been filled.
 
-        tl;dr This function fills a minimax tree.
-
-        The function runs in O(7^d) (d=maxDepth), but the true expansion is
-        considerably less than this after the move # + depth >= 4, because we
-        stop branches where there is a win and all seven columns are not
-        necessarily available.
-
-        """
         bMyTurn = (depth % 2 == 1)
 
         possibleBits = ai.get_legal_locations(myBoard | oppBoard)
